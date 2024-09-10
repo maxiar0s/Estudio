@@ -1,0 +1,30 @@
+body{
+    background-color: #eee;
+    font-size: 1.7em;
+}
+table{
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+    margin: 20px;
+}
+
+tr:nth-child(even){
+    background-color: #eee;
+}
+
+table th {
+    background-color: rgb(12, 117, 12);
+    color: white;
+    font-style: oblique;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+ table td{
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: 2px solid #ddd;
+    border-top: none;
+ }

@@ -1,0 +1,29 @@
+body {
+    background-color: rgb(211, 211, 211);
+}
+.caja{
+    margin: 15px;
+    background-color: rgb(255, 255, 255);
+    border-style: outset;
+    border-width: 1px;
+    width: 500px;
+}
+.texto{
+    border-bottom: solid rgb(175, 175, 175);
+    border-width: 1px;
+    padding: 15px;
+}
+.botones{
+    margin: 10px;
+    padding: 5px;
+    padding-bottom: 15px ;
+    border-style: hidden;
+    color: white;
+    height: 25px
+}
+#boton{
+    background-color: rgb(80, 161, 211);
+}
+#boton2{
+    background-color: rgb(151, 151, 151);
+}

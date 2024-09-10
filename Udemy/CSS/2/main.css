@@ -1,0 +1,22 @@
+body {
+    background-color: #eee;
+}
+.caja {
+    margin: 8px;
+
+    border-style: double;
+    border-width: 8px;
+    border-color: aquamarine;
+    border-left: 6px solid blueviolet;
+    border-right: 6px solid blueviolet;
+    border-bottom: 6px solid blueviolet;
+    border-top: 6px solid blueviolet;
+    border-radius: 8px;
+
+    padding: 8px;
+    
+    background-color: #aaf;
+    height: 100px;
+    width: 100px;
+    color: peru;
+}

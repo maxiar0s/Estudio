@@ -1,0 +1,21 @@
+body{
+    background-color: #eee;
+}
+
+ul{
+    font-size: 2em;
+    background-color: white;
+    border: solid 1px #ddd;
+    border-radius: 4px;
+    padding-inline-start: 0px;
+    margin: 15px;
+}
+
+ul li{
+    list-style-type: none;
+}
+
+li{
+    border-bottom: solid 1px #ddd;
+    padding: 15px;
+}

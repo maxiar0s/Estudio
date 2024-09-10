@@ -1,0 +1,16 @@
+body{
+    background-color: #eee;
+    font-size: 1.5em;
+}
+
+img{
+    float: right;
+}
+
+img:hover {
+    opacity: 0.7;
+}
+
+div p {
+    color: rgb(190, 36, 36);
+}

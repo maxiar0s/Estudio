@@ -1,0 +1,10 @@
+body{
+    background-color: #eee;
+    font-size: 1.7em;
+}
+
+#over{
+    width: 150px;
+    height: 150px;
+    overflow:auto;
+}
