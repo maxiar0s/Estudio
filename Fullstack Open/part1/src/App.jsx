@@ -1,96 +1,146 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import { useState } from "react";
 
-const Header = () => {
-  const course = "Half Stack application  devolpment";
-  return <h2>{course}</h2>;
-};
+const App = () => {
+  const [left, setLeft] = useState(0);
+  const [right, setRight] = useState(0);
 
-const Content = () => {
-  const part1 = "Fundamentals of React";
-  const exercises1 = 10;
-  const part2 = "Using props to pass data";
-  const exercises2 = 7;
-  const part3 = "State of a component";
-  const exercises3 = 14;
   return (
-    <>
-      <p>
-        {part1}: <strong>{exercises1}</strong>
-      </p>
-      <p>
-        {part2}: <strong>{exercises2}</strong>
-      </p>
-      <p>
-        {part3}: <strong>{exercises3}</strong>
-      </p>
-    </>
+    <div>
+      {left}
+      <button onClick={() => setLeft(left + 1)}>left</button>
+      <button onClick={() => setRight(right + 1)}>right</button>
+      {right}
+    </div>
   );
 };
 
-const Total = () => {
-  const exercises1 = 10;
-  const exercises2 = 7;
-  const exercises3 = 14;
-  return (
-    <>
-      <p>
-        <em>
-          Number of exercises:
-          <strong> {exercises1 + exercises2 + exercises3}</strong>
-        </em>
-      </p>
-    </>
-  );
-};
+//---------------------------------------------
+//---------------------------------------------
+//---------------------------------------------
 
-const Js = () => {
-  console.log("Example 1");
-  const t = [1, -1, 3];
+// const Counter = ({ counter }) => {
+//   return (
+//     <div>
+//       <p>{counter}</p>
+//     </div>
+//   );
+// };
 
-  t.push(5);
-  console.log(t.length); // se imprime 4
-  console.log(t[1]); // se imprime -1
+// const Button = ({ click, text }) => {
+//   return (
+//     <div>
+//       <button onClick={click}>{text}</button>
+//     </div>
+//   );
+// };
 
-  t.forEach((value) => {
-    console.log(value); // se imprimen los números 1, -1, 3, 5 cada uno en su propia línea
-  });
+// const App = () => {
+//   const [counter, setCounter] = useState(0);
+//   console.log("Counter Value: ", counter);
+//   const clickPlus = () => {
+//     console.log("Counter Value: ", counter);
+//     setCounter(counter + 1);
+//   };
+//   const clickMinus = () => {
+//     console.log("Counter Value: ", counter);
+//     if (counter > 0) {
+//       setCounter(counter - 1);
+//     }
+//   };
+//   const clickZero = () => {
+//     console.log("Counter Value: ", counter);
+//     setCounter(0);
+//   };
+//   return (
+//     <div>
+//       <Counter counter={counter} />
+//       <Button click={clickPlus} text="Plus" />
+//       <Button click={clickMinus} text="Minus" />
+//       <Button click={clickZero} text="Zero" />
+//     </div>
+//   );
+// };
 
-  console.log("Example 2");
-  const t2 = [1, -1, 3];
-  const t3 = t.concat(5); // crea un nuevo array
-  console.log(t2); // se imprime [1, -1, 3]
-  console.log(t3); // se imprime [1, -1, 3, 5]
+//--------------------------------------------
+//--------------------------------------------
+//--------------------------------------------
 
-  console.log("Example 3");
-  const t4 = [1, 2, 3];
-  const m1 = t4.map((value) => value * 2);
-  console.log(m1); // se imprime [2, 4, 6]
+// const Header = (props) => {
+//   return <h1>{props.course}</h1>;
+// };
 
-  console.log("Example 4");
-  const t5 = [1, 2, 3];
-  const m2 = t5.map((value) => "<li>" + value + "</li>");
-  console.log(m2);
-  // se imprime [ '<li>1</li>', '<li>2</li>', '<li>3</li>' ]
+// const Content = (props) => {
+//   return (
+//     <>
+//       <p>
+//         {props.part}: <strong>{props.exercises}</strong>
+//       </p>
+//     </>
+//   );
+// };
 
-  console.log("Example 5");
-  const t6 = [1, 2, 3, 4, 5];
-  const [first, second, ...rest] = t6;
-  console.log(first, second); // se imprime 1, 2
-  console.log(rest); // se imprime [3, 4 ,5]
-};
+// const Total = (props) => {
+//   return (
+//     <>
+//       <p>
+//         <em>
+//           Number of exercises:
+//           <strong>
+//             {" "}
+//             {props.exercises1 + props.exercises2 + props.exercises3}
+//           </strong>
+//         </em>
+//       </p>
+//     </>
+//   );
+// };
 
-const Js2 = () => {
-  console.log("Example 6");
-  const object1 = {
-    name: "Arto Hellas",
-    age: 35,
-    education: "PhD",
-  };
+// const Js = () => {
+//   console.log("Example 1");
+//   const t = [1, -1, 3];
 
-  const object2 = {
+//   t.push(5);
+//   console.log(t.length); // se imprime 4
+//   console.log(t[1]); // se imprime -1
+
+//   t.forEach((value) => {
+//     console.log(value); // se imprimen los números 1, -1, 3, 5 cada uno en su propia línea
+//   });
+
+//   console.log("Example 2");
+//   const t2 = [1, -1, 3];
+//   const t3 = t.concat(5); // crea un nuevo array
+//   console.log(t2); // se imprime [1, -1, 3]
+//   console.log(t3); // se imprime [1, -1, 3, 5]
+
+//   console.log("Example 3");
+//   const t4 = [1, 2, 3];
+//   const m1 = t4.map((value) => value * 2);
+//   console.log(m1); // se imprime [2, 4, 6]
+
+//   console.log("Example 4");
+//   const t5 = [1, 2, 3];
+//   const m2 = t5.map((value) => "<li>" + value + "</li>");
+//   console.log(m2);
+//   // se imprime [ '<li>1</li>', '<li>2</li>', '<li>3</li>' ]
+
+//   console.log("Example 5");
+//   const t6 = [1, 2, 3, 4, 5];
+//   const [first, second, ...rest] = t6;
+//   console.log(first, second); // se imprime 1, 2
+//   console.log(rest); // se imprime [3, 4 ,5]
+// };
+
+// const Js2 = () => {
+//   console.log("Example 6");
+//   const object1 = {
+//     name: "Arto Hellas",
+//     age: 35,
+//     education: "PhD",
+//   };
+
+/*const object2 = {
     name: "Full Stack web application development",
     level: "intermediate studies",
     size: 5,
@@ -103,26 +153,96 @@ const Js2 = () => {
     },
     grades: [2, 3, 5, 3],
     department: "Stanford University",
+  };*/
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+// const Hello = ({ name, age }) => {
+//   const bornYear = () => new Date().getFullYear() - age;
+
+//   return (
+//     <div>
+//       <p>
+//         Hello {name}, you are {age} years old
+//       </p>
+//       <p>So you were probably born in {bornYear()}</p>
+//     </div>
+//   );
+// };
+
+// const App = () => {
+//   const name = "Peter";
+//   const age = 10;
+
+//   return (
+//     <div>
+//       <h1>Greetings</h1>
+//       <Hello name="Maya" age={26 + 10} />
+//       <Hello name={name} age={age} />
+//     </div>
+//   );
+// };
+
+//---------------------------------------
+//---------------------------------------
+//---------------------------------------
+
+/*const App = () => {
+    const Hello = (props) => {
+      return (
+        <div>
+          <p>
+            Hello {props.name}, you are {props.age} years old
+          </p>
+        </div>
+      )
+    }
+
+    const course = {
+    name: "Half Stack application development",
+    parts: [
+      {
+        name: "Fundamentals of React",
+        exercises: 10,
+      },
+      {
+        name: "Using props to pass data",
+        exercises: 7,
+      },
+      {
+        name: "State of a component",
+        exercises: 14,
+      },
+    ],
   };
-
-  console.log(object1.name); // se imprime Arto Hellas
-  const fieldName = "age";
-  console.log(object1[fieldName]); // se imprime 35
-
-  object1.address = "Helsinki";
-  object1["secret number"] = 12341;
-  console.log(object1);
-};
-const App = () => {
   return (
     <>
-      <Header />
-      <Content />
-      <Total />
+      <Header course={course.name} />
+      <Content
+        part={course.parts[0].name}
+        exercises={course.parts[0].exercises}
+      />
+      <Content
+        part={course.parts[1].name}
+        exercises={course.parts[1].exercises}
+      />
+      <Content
+        part={course.parts[2].name}
+        exercises={course.parts[2].exercises}
+      />
+      <Total
+        exercises1={course.parts[0].exercises}
+        exercises2={course.parts[1].exercises}
+        exercises3={course.parts[2].exercises}
+      />
       <Js />
       <Js2 />
+      <Exercise1 />
+      <Exercise2 />
     </>
   );
-};
+};*/
 
 export default App;
