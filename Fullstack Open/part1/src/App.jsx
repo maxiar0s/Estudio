@@ -1,19 +1,117 @@
 import "./App.css";
 import { useState } from "react";
 
-const App = () => {
-  const [left, setLeft] = useState(0);
-  const [right, setRight] = useState(0);
-
+const App = ({ notes }) => {
   return (
     <div>
-      {left}
-      <button onClick={() => setLeft(left + 1)}>left</button>
-      <button onClick={() => setRight(right + 1)}>right</button>
-      {right}
+      <h1>Notes</h1>
+      <ul>
+        <li>{notes[0].content}</li>
+        <li>{notes[1].content}</li>
+        <li>{notes[2].content}</li>
+      </ul>
     </div>
   );
 };
+
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+
+// const App = () => {
+//   const [good, setGood] = useState(0);
+//   const [neutral, setNeutral] = useState(0);
+//   const [bad, setBad] = useState(0);
+//   const goodCounter = () => {
+//     setGood(good + 1);
+//   };
+//   const neutralCounter = () => {
+//     setNeutral(neutral + 1);
+//   };
+//   const badCounter = () => {
+//     setBad(bad + 1);
+//   };
+//   const total = () => {
+//     return good + neutral + bad;
+//   };
+
+//   const reset = () => {
+//     setGood(0);
+//     setNeutral(0);
+//     setBad(0);
+//   };
+//   return (
+//     <div>
+//       <h1>Give feedback</h1>
+//       <button onClick={goodCounter}>Good</button>
+//       <button onClick={neutralCounter}>Neutral</button>
+//       <button onClick={badCounter}>Bad</button>
+//       <h1>Statics</h1>
+//       <div>
+//         Good: {good} <br />
+//         Neutral: {neutral} <br />
+//         Bad: {bad}
+//       </div>
+//       <p>Total: {Math.round(total())}</p>
+//       <button onClick={reset}>Reset</button>
+//     </div>
+//   );
+// };
+
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
+// const IfUsed = ({ clicks }) => {
+//   if (clicks.length === 0) {
+//     return <h1>Counter not being used</h1>;
+//   }
+//   {
+//     return (
+//       <div>
+//         {clicks} <br />
+//         Counter of clicks: {clicks.length}
+//       </div>
+//     );
+//   }
+// };
+
+// const App = () => {
+//   const [leftClick, setLeftClick] = useState(0);
+//   const [rightClick, setRightClick] = useState(0);
+//   const [clicks, setClicks] = useState([]);
+
+//   const handleLeftClick = () => {
+//     setLeftClick(leftClick + 1);
+//     setClicks((prevClicks) => {
+//       return [...prevClicks, "L"];
+//     });
+//   };
+//   const handleRightClick = () => {
+//     setRightClick(rightClick + 1);
+//     setClicks((prevClicks) => {
+//       return [...prevClicks, "R"];
+//     });
+//   };
+//   const zeroClick = () => {
+//     setLeftClick(0);
+//     setRightClick(0);
+//     setClicks([]);
+//   };
+//   return (
+//     <div>
+//       {leftClick}
+//       <button onClick={handleLeftClick}>left</button>
+//       <button onClick={handleRightClick}>right</button>
+//       {rightClick}
+//       <br />
+//       <div>
+//         <IfUsed clicks={clicks} />
+//       </div>
+
+//       <button onClick={zeroClick}>Zero</button>
+//     </div>
+//   );
+// };
 
 //---------------------------------------------
 //---------------------------------------------
