@@ -10,6 +10,7 @@ const App2 = () => {
 
   useEffect(() => {
     console.log("effect");
+
     axios.get("http://localhost:3001/notes").then((response) => {
       console.log("promise fulfilled");
       setNotes(response.data);
@@ -26,14 +27,22 @@ const App2 = () => {
     event.preventDefault();
     console.log("Crear Nota");
     console.log(newNote);
+
     const addNoteToState = {
       id: notes.length + 1,
       content: newNote,
       important: Math.random() < 0.5,
     };
+
     console.log(addNoteToState);
     setNotes([...notes, addNoteToState]);
     setNewNote("");
+
+    axios
+      .post("http://localhost:3001/notes", addNoteToState)
+      .then((response) => {
+        console.log(response);
+      });
   };
 
   const handleShowAll = () => {
@@ -41,6 +50,7 @@ const App2 = () => {
   };
 
   const notesToShow = showAll ? notes : notes.filter((note) => note.important);
+
   return (
     <div>
       <h1>Notes</h1>
