@@ -1,72 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
-const Filter = ({ handleFilterChange }) => {
-  return (
-    <div>
-      <h2>Phonebook</h2>
-      <div>
-        {" "}
-        <p>
-          {" "}
-          filter shown with <input type="text" onChange={handleFilterChange} />
-        </p>
-      </div>
-    </div>
-  );
-};
-const PeopleForm = ({
-  addPerson,
-  newName,
-  handleNameChange,
-  newNumber,
-  handleNumberChange,
-  errMessage,
-}) => {
-  return (
-    <form onSubmit={addPerson}>
-      <h2>Add new person</h2>
-      <div>
-        name: <input type="text" value={newName} onChange={handleNameChange} />
-        <br />
-        number:{" "}
-        <input type="text" value={newNumber} onChange={handleNumberChange} />
-      </div>
-      {errMessage && <div style={{ color: "red" }}>{errMessage}</div>}
-      <div>
-        <button type="submit" style={{ marginTop: "10px" }}>
-          add
-        </button>
-      </div>
-    </form>
-  );
-};
+import PeopleForm from "./components/PeopleForm";
+import Filter from "./components/Filter";
+import PeopleList from "./components/PeopleList";
+import peopleService from "./services/people";
 
-const Persons = ({ filteredPeople }) => {
-  return (
-    <div>
-      {filteredPeople.map((person) => (
-        <div key={person.name}>
-          {person.name} {person.number}
-        </div>
-      ))}
-    </div>
-  );
-};
 const App = () => {
-  const [people, setPeople] = useState([
-    { name: "Arto Hellas", number: "040-123456", id: 1 },
-    { name: "Ada Lovelace", number: "39-44-5323523", id: 2 },
-    { name: "Dan Abramov", number: "12-43-234345", id: 3 },
-    { name: "Mary Poppendieck", number: "39-23-6423122", id: 4 },
-  ]);
+  const [people, setPeople] = useState([]);
   const [filter, setFilter] = useState("");
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [errMessage, setErrMessage] = useState(null);
 
+  useEffect(() => {
+    peopleService.getAll().then((initialPeople) => {
+      setPeople(initialPeople);
+    });
+  }, []);
+
   const addPerson = (event) => {
     event.preventDefault();
     const existingPerson = people.find((person) => person.name === newName);
+    const personObject = {
+      name: newName,
+      number: newNumber,
+      id: people.length + 1,
+    };
     if (existingPerson) {
       setErrMessage(`${newName} is already added to phonebook`);
       setTimeout(() => {
@@ -74,10 +33,16 @@ const App = () => {
       }, 3000);
     }
     {
-      setPeople([...people, { name: newName, number: newNumber }]);
-      setNewName("");
-      setNewNumber("");
-      setErrMessage(null);
+      peopleService.create(personObject).then((response) => {
+        setPeople(people.concat(response));
+        setNewName("");
+        setNewNumber("");
+        setErrMessage(null);
+      });
+      // setPeople([...people, { name: newName, number: newNumber }]);
+      // setNewName("");
+      // setNewNumber("");
+      // setErrMessage(null);
     }
   };
 
@@ -92,6 +57,48 @@ const App = () => {
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
   };
+
+  const updatePerson = (id, newObject) => {
+    peopleService
+      .update(id, newObject)
+      .then((returnedPerson) => {
+        setPeople(
+          people.map((person) => (person.id !== id ? person : returnedPerson))
+        );
+      })
+      .catch((error) => {
+        setErrMessage(
+          `Information of ${newObject.name} has already been removed from server`
+        );
+        setTimeout(() => {
+          setErrMessage(null);
+        }, 3000);
+      });
+  };
+
+  /*************  ✨ Codeium Command 🌟  *************/
+  /*************  ✨ Codeium Command 🌟  *************/
+  const dltPerson = (id) => {
+    const personToRemove = people.find((person) => person.id === id);
+    peopleService
+      .dlt(id)
+      .then(() => {
+        setPeople(people.filter((person) => person.id !== id));
+      })
+      .catch((error) => {
+        setErrMessage(
+          `Information of ${personToRemove.name} has already been removed from server`
+          // `Information of ${
+          //   people.find((person) => person.id === id)?.name
+          // } has already been removed from server`
+        );
+        setTimeout(() => {
+          setErrMessage(null);
+        }, 3000);
+      });
+  };
+  /******  02cb1208-6a18-435c-92a8-0e503518a13a  *******/
+  /******  e612aad2-d430-4f60-9b7f-d0080766d386  *******/
 
   const filteredPeople = people.filter((person) => {
     return person.name.toLowerCase().includes(filter.toLowerCase());
@@ -108,7 +115,7 @@ const App = () => {
         handleNumberChange={handleNumberChange}
         errMessage={errMessage}
       />
-      <Persons filteredPeople={filteredPeople} />
+      <PeopleList filteredPeople={filteredPeople} dlt={dltPerson()} />
     </div>
   );
 };

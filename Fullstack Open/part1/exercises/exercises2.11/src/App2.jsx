@@ -1,52 +1,57 @@
-import "./App.css";
 import { useState, useEffect } from "react";
-import axios from "axios";
+
 import Note from "./components/Note";
+import noteService from "./services/notes";
+import Notification from "./components/Notification";
+import "./App.css";
+import Footer from "./components/Footer";
 
 const App2 = () => {
   const [notes, setNotes] = useState([]);
   const [newNote, setNewNote] = useState("");
   const [showAll, setShowAll] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
-    console.log("effect");
-
-    axios.get("http://localhost:3001/notes").then((response) => {
-      console.log("promise fulfilled");
-      setNotes(response.data);
+    noteService.getAll().then((initialNotes) => {
+      setNotes(initialNotes);
     });
   }, []);
 
-  console.log("render", notes.length, "notes");
-
-  const handleNoteChange = (event) => {
-    setNewNote(event.target.value);
-  };
-
-  const handleClick = (event) => {
+  const addNote = (event) => {
     event.preventDefault();
-    console.log("Crear Nota");
-    console.log(newNote);
-
-    const addNoteToState = {
-      id: notes.length + 1,
+    const noteObject = {
       content: newNote,
-      important: Math.random() < 0.5,
+      important: Math.random() > 0.5,
     };
 
-    console.log(addNoteToState);
-    setNotes([...notes, addNoteToState]);
-    setNewNote("");
+    noteService.create(noteObject).then((returnedNote) => {
+      setNotes(notes.concat(returnedNote));
+      setNewNote("");
+    });
+  };
 
-    axios
-      .post("http://localhost:3001/notes", addNoteToState)
-      .then((response) => {
-        console.log(response);
+  const toggleImportanceOf = (id) => {
+    const note = notes.find((n) => n.id === id);
+    const changedNote = { ...note, important: !note.important };
+
+    noteService
+      .update(id, changedNote)
+      .then((returnedNote) => {
+        setNotes(notes.map((note) => (note.id !== id ? note : returnedNote)));
+      })
+      .catch((error) => {
+        setErrorMessage(
+          `Note '${note.content}' was already removed from server`
+        );
+        setTimeout(() => {
+          setErrorMessage(null);
+        }, 5000);
       });
   };
 
-  const handleShowAll = () => {
-    setShowAll(() => !showAll);
+  const handleNoteChange = (event) => {
+    setNewNote(event.target.value);
   };
 
   const notesToShow = showAll ? notes : notes.filter((note) => note.important);
@@ -54,18 +59,28 @@ const App2 = () => {
   return (
     <div>
       <h1>Notes</h1>
-      <button onClick={handleShowAll}>
-        {showAll ? "Show only important" : "Show all"}
-      </button>
-      <ul>
-        {notesToShow.map((note) => {
-          return <Note key={note.id} content={note.content} />;
-        })}
-      </ul>
-      <form onSubmit={handleClick}>
-        <input type="text" onChange={handleNoteChange} value={newNote} />
-        <button type="submit">Save</button>
-      </form>
+      <Notification message={errorMessage} />
+      <div className="appList">
+        <div>
+          <button className="btnImportant" onClick={() => setShowAll(!showAll)}>
+            show {showAll ? "important" : "all"}
+          </button>
+        </div>
+        <ul>
+          {notesToShow.map((note) => (
+            <Note
+              key={note.id}
+              note={note}
+              toggleImportance={() => toggleImportanceOf(note.id)}
+            />
+          ))}
+        </ul>
+        <form className="newNote" onSubmit={addNote}>
+          <input value={newNote} onChange={handleNoteChange} />
+          <button type="submit">save</button>
+        </form>
+        <Footer />
+      </div>
     </div>
   );
 };

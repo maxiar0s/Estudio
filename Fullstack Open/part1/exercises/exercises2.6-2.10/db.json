@@ -19,6 +19,16 @@
       "name": "Mary Poppendieck",
       "number": "39-23-6423122",
       "id": 4
+    },
+    {
+      "id": 5,
+      "name": "Maximiliano",
+      "number": "400203030"
+    },
+    {
+      "id": 6,
+      "name": "Fran",
+      "number": "2001"
     }
   ]
 }
