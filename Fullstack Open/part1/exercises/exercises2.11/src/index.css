@@ -1,6 +1,29 @@
 body {
-  background-color: rgb(213, 213, 213);
+  /* background-color: rgb(213, 213, 213); */
+  background: rgb(60, 60, 60);
+  background: linear-gradient(
+    0deg,
+    rgba(60, 60, 60, 1) 0%,
+    rgba(124, 124, 124, 1) 48%,
+    rgba(221, 221, 221, 1) 100%
+  );
   font-family: monospace;
+}
+
+#appContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#appList {
+  background: rgb(0, 0, 69);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 69, 1) 0%,
+    rgba(0, 5, 136, 1) 50%,
+    rgba(54, 52, 228, 1) 100%
+  );
 }
 
 h1 {
@@ -8,18 +31,22 @@ h1 {
   font-weight: bolder;
 }
 
-.note {
+#noteContainer {
+  background: rgb(184, 184, 184);
+  background: linear-gradient(
+    0deg,
+    rgba(184, 184, 184, 1) 0%,
+    rgba(218, 218, 218, 1) 48%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+/* .note {
   color: rgb(213, 213, 213);
   padding-top: 3px;
   font-size: 15px;
   margin-bottom: 10px;
-}
-
-.appList {
-  border: 3px solid rgb(125, 125, 125);
-  border-radius: 10px;
-  background-color: rgb(35, 35, 35);
-}
+} */
 
 .btnImportant {
   background-color: rgb(213, 213, 213);
@@ -52,3 +79,7 @@ h1 {
   margin-left: 15px;
   font-size: 40px;
 }
+
+/* #noteContainer {
+  background-color: rgb(213, 213, 213);
+} */
