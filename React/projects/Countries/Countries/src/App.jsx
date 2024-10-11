@@ -29,7 +29,10 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <div
+      id="app"
+      className="card text-center w-50 mx-auto font-monospace  shadow-lg mt-3"
+    >
       <SearchFilter search={search} handleChange={handleChange} />
       <Filtered
         filteredCountries={filteredCountries}
