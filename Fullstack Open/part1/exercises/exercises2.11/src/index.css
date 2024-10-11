@@ -1,5 +1,6 @@
 body {
   background-color: rgb(213, 213, 213);
+  font-family: monospace;
 }
 
 h1 {
@@ -35,7 +36,7 @@ h1 {
   margin-left: 15px;
 }
 
-.error {
+/* .error {
   color: red;
   background: lightgrey;
   font-size: 20px;
@@ -43,4 +44,11 @@ h1 {
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
+} */
+
+.title {
+  color: rgb(35, 35, 35);
+  font-weight: bolder;
+  margin-left: 15px;
+  font-size: 40px;
 }
