@@ -3,7 +3,8 @@ const ImportantNotes = ({ showAll, showImportant }) => {
     <div>
       <button
         type="button"
-        className="btn btn-secondary mt-4 ms-5 mb-4"
+        className="btn rounded shadow-sm ms-5"
+        id="show-important"
         onClick={showImportant}
       >
         Show {showAll ? "important" : "all"}

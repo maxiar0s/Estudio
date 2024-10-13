@@ -1,17 +1,17 @@
 {
   "notes": [
     {
-      "id": "2",
+      "id": 2,
       "content": "Browser can execute only JavaScript",
       "important": true
     },
     {
-      "id": "4",
+      "id": 4,
       "content": "Maximiliano, Francisca y Joaquin",
       "important": false
     },
     {
-      "id": "5",
+      "id": 5,
       "content": "This is a test note",
       "important": true
     }

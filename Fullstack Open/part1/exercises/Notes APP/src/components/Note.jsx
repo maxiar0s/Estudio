@@ -2,27 +2,23 @@ const Note = ({ note, toggleImportance, removeNote }) => {
   const label = note.important ? "make not important" : "make important";
 
   return (
-    <div
-      className="card card w-75 mb-2 shadow border-opacity-10"
-      id="noteContainer"
-    >
-      <div className="card-body ms-3 " id="noteBody">
-        <li className="singleNote">
-          {note.content} <br />
-          <button
-            id="btnImp"
-            className="btn btn-outline-secondary mt-1"
-            onClick={toggleImportance}
-          >
-            {label}
-          </button>
-          <button
-            className="btn btn-outline-danger form-control-sm ms-1"
-            onClick={removeNote}
-          >
-            Delete
-          </button>
-        </li>
+    <div className="card card-body  mt-3 shadow" id="noteCard">
+      <div className="">
+        <p className="mt-2 fs-5">{note.content}</p>
+        <button
+          id="btn-importance"
+          className="btn rounded me-2 shadow-sm"
+          onClick={toggleImportance}
+        >
+          {label}
+        </button>
+        <button
+          id="btn-delete"
+          className="btn rounded shadow-sm"
+          onClick={removeNote}
+        >
+          Delete
+        </button>
       </div>
     </div>
   );

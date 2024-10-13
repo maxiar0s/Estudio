@@ -9,12 +9,17 @@ const Filtered = ({ filteredCountries, handleClick }) => {
     return <OneCountry country={filteredCountries} />;
   } else {
     return (
-      <div>
+      <div className="mb-3">
         {filteredCountries.map((country) => {
           return (
-            <div key={country.name.common}>
+            <div className="mb-2" key={country.name.common}>
               {country.name.common}
-              <button onClick={() => handleClick(country.name.common)}>
+              <button
+                id="showBtn"
+                className="btn
+                ms-3 w-10 shadow-sm text-light"
+                onClick={() => handleClick(country.name.common)}
+              >
                 Show
               </button>
             </div>

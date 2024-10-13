@@ -58,6 +58,13 @@ const App = () => {
     const note = notes.find((n) => n.id === id);
     const changedNote = { ...note, important: !note.important };
 
+    // console.log(changedNote);
+    // console.log(id);
+    // console.log(note);
+    // console.log(typeof changedNote);
+    // console.log(typeof id);
+    // console.log(typeof note);
+
     noteService
       .update(id, changedNote)
       .then((returnedNote) => {
@@ -86,10 +93,10 @@ const App = () => {
   };
 
   return (
-    <div className="container rounded mb-3 shadow" id="appContainer">
-      <h1 className="title mt-3">Notes</h1>
+    <div className="card w-75 mx-auto mt-3 shadow rounded mb-3" id="appCard">
+      <h1 className="ms-4 mt-3 mb-3">NOTES</h1>
       <Notification message={errorMessage} />
-      <div className="appList shadow-lg bg-body rounded" id="appList">
+      <div className="" id="">
         <ImportantNotes showAll={showAll} showImportant={showImportant} />
         <NoteList
           notesToShow={notesToShow}

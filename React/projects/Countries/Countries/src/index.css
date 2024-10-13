@@ -1,0 +1,42 @@
+body {
+  background: rgb(12, 212, 199);
+  background: linear-gradient(
+    90deg,
+    rgba(12, 212, 199, 1) 0%,
+    rgba(19, 189, 196, 1) 40%,
+    rgba(9, 138, 172, 1) 100%
+  );
+}
+
+#search {
+  /* background: rgb(17, 125, 122);
+  background: linear-gradient(
+    0deg,
+    rgba(17, 125, 122, 1) 0%,
+    rgba(17, 125, 122, 1) 48%,
+    rgba(17, 125, 122, 1) 100%
+  ); */
+  background: rgb(12, 212, 199);
+  background: linear-gradient(
+    260deg,
+    rgba(12, 212, 199, 1) 0%,
+    rgba(19, 189, 196, 1) 40%,
+    rgba(9, 138, 172, 1) 100%
+  );
+}
+#showBtn {
+  /* background: rgb(17, 125, 122);
+  background: linear-gradient(
+    0deg,
+    rgba(17, 125, 122, 1) 0%,
+    rgba(17, 125, 122, 1) 48%,
+    rgba(17, 125, 122, 1) 100%
+  ); */
+  background: rgb(12, 212, 199);
+  background: linear-gradient(
+    260deg,
+    rgba(12, 212, 199, 1) 0%,
+    rgba(19, 189, 196, 1) 40%,
+    rgba(9, 138, 172, 1) 100%
+  );
+}

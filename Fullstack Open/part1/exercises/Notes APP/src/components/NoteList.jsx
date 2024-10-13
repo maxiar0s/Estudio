@@ -2,7 +2,7 @@ import Note from "./Note";
 
 const NoteList = ({ notesToShow, toggleImportanceOf, removeNote }) => {
   return (
-    <ul>
+    <div className="container-fluid">
       {notesToShow.map((note) => (
         <Note
           key={note.id}
@@ -11,7 +11,7 @@ const NoteList = ({ notesToShow, toggleImportanceOf, removeNote }) => {
           removeNote={() => removeNote(note.id)}
         />
       ))}
-    </ul>
+    </div>
   );
 };
 
