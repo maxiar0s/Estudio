@@ -93,8 +93,10 @@ const App = () => {
   };
 
   return (
-    <div className="card w-75 mx-auto mt-3 shadow rounded mb-3" id="appCard">
-      <h1 className="ms-4 mt-3 mb-3">NOTES</h1>
+    <div className="card w-75 mx-auto mt-3 shadow rounded mb-4" id="appCard">
+      <h1 id="notesHeader" className="ms-4 mt-3 mb-3 font-weight-bolder">
+        NOTES
+      </h1>
       <Notification message={errorMessage} />
       <div className="" id="">
         <ImportantNotes showAll={showAll} showImportant={showImportant} />
