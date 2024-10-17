@@ -1,7 +1,7 @@
-const BlogList = ({ blogs }) => {
+const BlogList = ({ filteredBlogs }) => {
   return (
     <div className="">
-      {blogs.map((blog, index) => (
+      {filteredBlogs.map((blog, index) => (
         <div key={index} className="border border-2 ">
           <p className="d-inline-flex gap-1">
             <a
