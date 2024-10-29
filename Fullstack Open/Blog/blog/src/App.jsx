@@ -25,6 +25,7 @@ function App() {
     );
   });
 
+  console.log(filteredBlogs.reduce((acc, blog) => acc + blog.likes, 5));
   console.log(filteredBlogs);
 
   return (
