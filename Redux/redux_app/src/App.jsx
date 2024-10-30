@@ -1,39 +1,34 @@
-import { createStore } from "redux";
-
-import noteReducer from "./reducers/noteReducer";
-
-const store = createStore(noteReducer);
-
-store.dispatch({
-  type: "new_note",
-  payload: {
-    content: "The app state is managed by redux ",
-    important: true,
-    id: 1,
-  },
-});
-
-store.dispatch({
-  type: "new_note",
-  payload: {
-    content: "state changes are usually made with actions ",
-    important: false,
-    id: 2,
-  },
-});
+import Notes from "./components/Notes.jsx";
+import NewNote from "./components/NewNote.jsx";
 
 const App = () => {
-  const state = store.getState();
+  const filteredSelected = (value) => {
+    console.log(value);
+  };
   return (
     <div>
-      <ul>
-        {state.map((note) => (
-          <li key={note.id}>
-            {note.content}{" "}
-            <strong>{note.important ? "important" : "not important"}</strong>
-          </li>
-        ))}
-      </ul>
+      <NewNote />
+      <div>
+        all notes{" "}
+        <input
+          type="radio"
+          name="filter"
+          onChange={() => filteredSelected("ALL")}
+        />
+        important{" "}
+        <input
+          type="radio"
+          name="filter"
+          onChange={() => filteredSelected("IMPORTANT")}
+        />
+        not important{" "}
+        <input
+          type="radio"
+          name="filter"
+          onChange={() => filteredSelected("NOT_IMPORTANT")}
+        />
+      </div>
+      <Notes />
     </div>
   );
 };
